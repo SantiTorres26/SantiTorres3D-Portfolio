@@ -23,7 +23,9 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: black;
+    background: rgb(0, 0, 0); 
+    border: 1px solid; /* Añadimos un borde */
+    border-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)) 1; /* Borde degradado con transparencia */
     position: sticky;
     top: 0;
     z-index: 100;
@@ -50,7 +52,6 @@ main {
     color: black;
 }
 
-
 .menu-toggle {
     display: none;
     font-size: 24px;
@@ -69,7 +70,7 @@ main {
     .navbar-right {
         display: none; /* Oculta el menú por defecto */
         flex-direction: column;
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.6); /* Fondo negro con transparencia */
         position: absolute;
         top: 100%;
         right: 0;
@@ -79,7 +80,8 @@ main {
         text-align: center;
         padding: 10px 0;
         border-radius: 0.5rem;
-       
+        border: 1px solid; /* Añadimos un borde */
+        border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)) 1; /* Borde degradado con transparencia */
     }
 
     .navbar-right.active {
@@ -93,40 +95,67 @@ main {
     }
 }
 
+/* HEADER CONTAINER */
+
+.header-container {
+    position: absolute;
+    top: 50px; /* Ajusta este valor para bajar el contenedor */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10; /* Asegura que el contenedor esté por encima del contenido del carousel */
+}
+
+.main-header {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.sub-header {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 300; /* Letra más fina */
+}
+
+.sub-sub-header {
+    font-size: 1.25rem;
+    color: white;
+    font-weight: 300; /* Letra más fina */
+}
 
 /* HOME SECTION */ 
-
-/* CAROUSEL STYLES */
 
 .carousel {
     position: relative;
     width: 100%;
     height: 100vh; /* Ocupa toda la altura de la ventana */
     overflow: hidden;
-  }
-  
-  .carousel-inner {
+}
+
+.carousel-inner {
     display: flex;
     height: 100%; /* Asegura que los elementos ocupen toda la altura */
     transition: transform 1s ease;
-  }
-  
-  .carousel-item {
+}
+
+.carousel-item {
     min-width: 100%;
     height: 100%; /* Asegura que los elementos ocupen toda la altura */
     transition: opacity 1s ease;
-  }
-  
-  .carousel-item video,
-  .carousel-item img {
+}
+
+.carousel-item video,
+.carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Ajusta el contenido para cubrir todo el contenedor */
     object-position: center; /* Centra el contenido dentro del contenedor */
     display: block;
-  }
-  
-  .carousel-control {
+}
+
+.carousel-control {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -136,85 +165,36 @@ main {
     padding: 10px;
     cursor: pointer;
     z-index: 10;
-  }
-  
-  .carousel-control.prev {
-    left: 10px;
-  }
-  
-  .carousel-control.next {
-    right: 10px;
-  }
-  
-  .carousel-indicators {
+}
+
+.carousel-control.prev {
+    left: 15px;
+}
+
+.carousel-control.next {
+    right: 15px;
+}
+
+.carousel-indicators {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-  }
-  
-  .indicator {
+}
+
+.indicator {
     width: 10px;
     height: 10px;
     background-color: white;
     margin: 0 5px;
     border-radius: 50%;
     cursor: pointer;
-  }
-  
-  .indicator.active {
+}
+
+.indicator.active {
     background-color: gray;
-  }
-
-  /* GLITCH TEXT STYLES */
-.glitch-text {
-    position: absolute;
-    bottom: 20px; /* Posición en la parte inferior */
-    left: 20px; /* Posición en la parte izquierda */
-    font-size: 3rem;
-    color: white;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
-    animation: glitch 1s infinite;
-    overflow: hidden;
-  }
-  
-  @keyframes glitch {
-    0%, 100% {
-      text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
-    }
-    10% {
-      text-shadow: 3px 3px 1px rgba(255, 0, 0, 0.6), -3px -3px 1px rgba(0, 255, 0, 0.6);
-    }
-    20% {
-      text-shadow: -5px -5px 1px rgba(0, 0, 255, 0.6), 5px 5px 1px rgba(255, 255, 0, 0.6);
-    }
-    30% {
-      text-shadow: 5px 5px 1px rgba(255, 0, 255, 0.6), -5px -5px 1px rgba(0, 255, 255, 0.6);
-    }
-    40% {
-      text-shadow: -7px -7px 1px rgba(255, 255, 255, 0.6), 7px 7px 1px rgba(0, 0, 0, 0.6);
-    }
-    50% {
-      text-shadow: 7px 7px 1px rgba(255, 0, 0, 0.6), -7px -7px 1px rgba(0, 255, 0, 0.6);
-    }
-    60% {
-      text-shadow: -9px -9px 1px rgba(0, 0, 255, 0.6), 9px 9px 1px rgba(255, 255, 0, 0.6);
-    }
-    70% {
-      text-shadow: 9px 9px 1px rgba(255, 0, 255, 0.6), -9px -9px 1px rgba(0, 255, 255, 0.6);
-    }
-    80% {
-      text-shadow: -11px -11px 1px rgba(255, 255, 255, 0.6), 11px 11px 1px rgba(0, 0, 0, 0.6);
-    }
-    90% {
-      text-shadow: 11px 11px 1px rgba(255, 0, 0, 0.6), -11px -11px 1px rgba(0, 255, 0, 0.6);
-    }
-  }
-
-
-    
-
+}
 
 .section { 
     text-align: center;
@@ -227,8 +207,69 @@ main {
     justify-content: center;
 }
 
+/* SERVICES SECTION */
 
-/* PORTFOLIO STYLES  */
+.services-section {
+    padding: 50px 20px;
+    background-color: black;
+}
+
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.service-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid white;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Añadir transición para el sombreado */
+    padding: 20px;
+}
+
+.service-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease; /* Añadir transición para el SVG */
+}
+
+.service-title {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 600;
+    transition: transform 0.3s ease; /* Añadir transición para el tamaño de la letra */
+}
+
+.service-description {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center; /* Centrar el contenido del párrafo */
+    transition: transform 0.3s ease; /* Añadir transición para el tamaño de la letra */
+}
+
+.service-item:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5); /* Sombreado blanco detrás al hacer hover */
+}
+
+.service-item:hover .service-icon {
+    transform: scale(1.2); /* Agrandar el SVG al hacer hover */
+}
+
+.service-item:hover .service-title,
+.service-item:hover .service-description {
+    transform: scale(1.05); /* Agrandar el tamaño de la letra al hacer hover */
+}
+
+
 
 .portfolio-grid {
     padding: 5px;
@@ -238,49 +279,48 @@ main {
 }
 
 .project-card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid white;
-  border-radius: 8px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Añadir transición para el sombreado */
+    position: relative;
+    overflow: hidden;
+    border: 1px solid white;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Añadir transición para el sombreado */
 }
 
 .project-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: brightness(50%) blur(2px);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(50%) blur(2px);
 }
 
 .project-card h3 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  z-index: 2;
-  pointer-events: none; /* Evita que el texto interfiera con el hover */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    pointer-events: none; /* Evita que el texto interfiera con el hover */
 }
 
 .project-card:hover h3 {
-  text-shadow: 3px 3px 7px rgba(0, 0, 0, 1);
+    text-shadow: 3px 3px 7px rgba(0, 0, 0, 1);
 }
 
 .project-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5); /* Sombreado blanco detrás al hacer hover */
+    transform: scale(1.01);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5); /* Sombreado blanco detrás al hacer hover */
 }
 
 .project-card:hover img {
-  transform: scale(1.1);
-  filter: brightness(100%) blur(0);
+    transform: scale(1.1);
+    filter: brightness(100%) blur(0);
 }
-
 
 /*  ABOUT ME */
 
@@ -336,8 +376,6 @@ main {
     margin-bottom: 0.5rem;
 }
 
-
-
 /* CONTACT */
 
 .contact-form {
@@ -389,8 +427,6 @@ main {
     border: 1px solid white;
     transform: scale(1.05); /* Aumentar ligeramente el tamaño al hacer hover */
 }
-
-
 
 /* FOOTER */
 
